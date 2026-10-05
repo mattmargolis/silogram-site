@@ -3,409 +3,51 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.add("js")</script>
 <meta name="robots" content="noindex, nofollow">
-<meta name="description" content="Silogram connects the SQL, R and Python in your analysis repository to manuscripts, abstracts, clinical study reports and regulatory documents, with every number traced to the code that made it.">
+<title>Silogram · Publish sooner. Reach coverage sooner.</title>
+<meta name="description" content="Silogram turns analysis code into manuscripts, abstracts, clinical study reports and payer dossiers, with every number traced to the code that made it, so the evidence payers ask for exists sooner.">
 <meta name="color-scheme" content="light dark">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Silogram">
-<meta property="og:description" content="Silogram connects the SQL, R and Python in your analysis repository to manuscripts, abstracts, clinical study reports and regulatory documents, with every number traced to the code that made it.">
+<meta property="og:title" content="Silogram · Publish sooner. Reach coverage sooner.">
+<meta property="og:description" content="Silogram turns analysis code into manuscripts, abstracts, clinical study reports and payer dossiers, with every number traced to the code that made it, so the evidence payers ask for exists sooner.">
 <meta property="og:url" content="https://silogram.ai/">
 <link rel="canonical" href="https://silogram.ai/">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<title>Silogram</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&amp;display=swap">
-<style>
-/*
-  Silogram, silogram.ai
-  Layout: one left-aligned column, max 72rem. Section heads sit in a left margin column like
-  marginalia and the content runs to the right. The hero is a manuscript page with its review
-  notes in the margin. Navy marks verified numbers and actions, teal marks agents only,
-  and the flag color marks numbers not linked to the analysis.
-*/
-:root {
-  color-scheme: light;
-  --paper: #F4F6F8;
-  --panel: #FFFFFF;
-  --ink: #15202B;
-  --muted: #4A5563;
-  --faint: #66717E;
-  --line: #D9DFE5;
-  --primary: #1E3F69;
-  --on-primary: #FFFFFF;
-  --primary-wash: #E7EDF5;
-  --agent: #0F766E;
-  --agent-wash: #E3F2EF;
-  --flag: #9A3412;
-  --shadow: rgba(21, 32, 43, 0.18);
-  --shot-dim: 1;
-  /* The logo keeps its brand colors in both themes. */
-  --logo-ink: #1E3F69;
-  --logo-paper: #FFFFFF;
-  --logo-dot: #13A89E;
-
-  --font-display: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
-  --font-sans: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
-
-  --fs-xs: 0.8125rem;
-  --fs-sm: 0.9375rem;
-  --fs-md: 1.0625rem;
-  --fs-lg: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
-  --fs-xl: clamp(2.375rem, 1.6rem + 3.2vw, 3.75rem);
-  --doc-lh: 1.75rem;
-
-  --gutter: clamp(16px, 4vw, 48px);
-  --col-gap: clamp(24px, 4vw, 56px);
-  --measure: 36rem;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0E141B;
-    --panel: #151E28;
-    --ink: #E6ECF2;
-    --muted: #A6B2BF;
-    --faint: #8693A1;
-    --line: #273444;
-    --primary: #8DB3E8;
-    --on-primary: #0E141B;
-    --primary-wash: #172638;
-    --agent: #3CC9B8;
-    --agent-wash: #12312E;
-    --flag: #F0A07A;
-    --shadow: rgba(0, 0, 0, 0.55);
-    --shot-dim: 0.9;
-    color-scheme: dark;
-  }
-}
-:root[data-theme="dark"] {
-  --paper: #0E141B;
-  --panel: #151E28;
-  --ink: #E6ECF2;
-  --muted: #A6B2BF;
-  --faint: #8693A1;
-  --line: #273444;
-  --primary: #8DB3E8;
-  --on-primary: #0E141B;
-  --primary-wash: #172638;
-  --agent: #3CC9B8;
-  --agent-wash: #12312E;
-  --flag: #F0A07A;
-  --shadow: rgba(0, 0, 0, 0.55);
-  --shot-dim: 0.9;
-  color-scheme: dark;
-}
-
-/* Base */
-*, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 400 var(--fs-md)/1.6 var(--font-sans);
-  -webkit-font-smoothing: antialiased;
-}
-h1, h2, h3, p, ul, ol, dl, dd, figure, pre, table { margin: 0; }
-ul, ol { padding: 0; list-style: none; }
-img { display: block; max-width: 100%; height: auto; }
-a { color: var(--primary); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-a:hover { text-decoration-thickness: 2px; }
-:focus-visible { outline: 2px solid var(--primary); outline-offset: 3px; }
-::selection { background: var(--primary-wash); color: var(--ink); }
-code, pre { font-family: var(--font-mono); }
-p { text-wrap: pretty; }
-.nowrap { white-space: nowrap; }
-.sr-only {
-  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; border: 0;
-  overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-}
-.skip {
-  position: absolute; left: var(--gutter); top: 8px; z-index: 10; padding: 8px 12px;
-  background: var(--panel); color: var(--primary); border: 1px solid var(--line);
-  transform: translateY(-300%);
-}
-.skip:focus { transform: none; }
-
-/* Type */
-h1, h2 { font-family: var(--font-display); font-weight: 500; letter-spacing: -0.012em; text-wrap: balance; }
-h1 { font-size: var(--fs-xl); line-height: 1.04; }
-h1 em { font-weight: 400; }
-h2 { font-size: var(--fs-lg); line-height: 1.12; }
-h3 { font: 600 var(--fs-md)/1.35 var(--font-sans); text-wrap: balance; }
-.eyebrow, .label {
-  font: 500 var(--fs-xs)/1.4 var(--font-mono); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted);
-}
-.lead { color: var(--muted); max-width: var(--measure); }
-
-/* Frame */
-.site {
-  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
-  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
-}
-.masthead, main, .footer { max-width: 72rem; margin-inline: auto; }
-
-.masthead {
-  display: grid; grid-template-columns: auto auto; justify-content: space-between; align-items: center;
-  gap: 8px 24px; padding-block: 18px; border-bottom: 1px solid var(--line);
-}
-.brand {
-  display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none;
-  font: 600 1.375rem/1 var(--font-display); letter-spacing: -0.01em;
-}
-.mark { flex: none; }
-.mark-bg { fill: var(--logo-ink); }
-.mark-fg { fill: var(--logo-paper); }
-.mark-rule { fill: none; stroke: var(--logo-paper); stroke-width: 1.8; }
-.mark-dot { fill: var(--logo-dot); }
-.nav { grid-column: 1 / -1; grid-row: 2; }
-.nav ul { display: flex; flex-wrap: wrap; gap: 0 clamp(14px, 4vw, 22px); }
-.nav a { display: inline-block; padding-block: 6px; color: var(--muted); font-size: var(--fs-sm); text-decoration: none; }
-.nav a:hover { color: var(--ink); text-decoration: underline; }
-@media (min-width: 760px) {
-  .masthead { grid-template-columns: auto minmax(0, 1fr) auto; }
-  .nav { grid-column: auto; grid-row: auto; justify-self: end; }
-}
-
-.btn {
-  display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 18px;
-  border: 1px solid transparent; border-radius: 2px; font: 500 var(--fs-sm)/1.2 var(--font-sans);
-  text-decoration: none; cursor: pointer; transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
-}
-.btn-primary { background: var(--primary); color: var(--on-primary); }
-.btn-primary:hover { background: var(--ink); color: var(--paper); }
-.btn-secondary { background: transparent; color: var(--ink); border-color: var(--faint); }
-.btn-secondary:hover { border-color: var(--ink); }
-.btn-small { min-height: 40px; padding: 8px 14px; }
-.actions { display: flex; flex-wrap: wrap; gap: 12px; }
-
-.section {
-  display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(28px, 4vw, 48px);
-  padding-block: clamp(56px, 8vw, 112px); border-top: 1px solid var(--line);
-}
-.section-head { display: grid; gap: 14px; align-content: start; max-width: 44rem; min-width: 0; }
-@media (min-width: 900px) {
-  .split { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); column-gap: var(--col-gap); }
-}
-
-/* Hero */
-.hero {
-  display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(36px, 5vw, 64px);
-  padding-block: clamp(40px, 6vw, 80px) clamp(56px, 8vw, 104px);
-}
-.hero-text { display: grid; gap: 24px; }
-.hero-deck { display: grid; gap: 22px; align-content: end; }
-.hero-note { font: 400 var(--fs-xs)/1.5 var(--font-mono); color: var(--faint); }
-.hero-figure { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px var(--col-gap); align-items: start; }
-.hero-figure > figcaption { font: 400 var(--fs-xs)/1.5 var(--font-mono); color: var(--faint); }
-@media (min-width: 960px) {
-  .hero-text, .hero-figure { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); column-gap: var(--col-gap); }
-  .hero-text { align-items: end; }
-  .hero-figure > figcaption { grid-column: 1 / -1; }
-}
-
-.page {
-  min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 3px;
-  box-shadow: 0 28px 56px -36px var(--shadow);
-}
-.page-bar, .page-foot {
-  display: flex; flex-wrap: wrap; gap: 2px 18px; padding: 9px clamp(14px, 3vw, 24px);
-  font: 400 var(--fs-xs)/1.5 var(--font-mono); color: var(--muted);
-}
-.page-bar { justify-content: space-between; border-bottom: 1px solid var(--line); }
-.page-foot { border-top: 1px solid var(--line); }
-.page-body { padding: clamp(20px, 3vw, 36px) clamp(14px, 4vw, 48px) clamp(24px, 3.5vw, 40px) clamp(8px, 2vw, 24px); }
-.numbered { position: relative; padding-left: 3rem; font: 400 var(--fs-md)/var(--doc-lh) var(--font-display); }
-.ln {
-  position: absolute; top: 0; bottom: 0; left: 0; width: 2.1rem; overflow: hidden; text-align: right;
-  font: 400 var(--fs-xs)/var(--doc-lh) var(--font-mono); color: var(--faint); user-select: none; -webkit-user-select: none;
-}
-.ms-head { font-weight: 600; }
-.v {
-  color: var(--primary); background: var(--primary-wash); border-bottom: 1px dotted var(--primary);
-  padding-inline: 1px; font-variant-numeric: tabular-nums;
-}
-.v.is-on { outline: 1.5px solid var(--primary); outline-offset: 1px; margin-inline: 2px; }
-.ins {
-  color: var(--agent); background: var(--agent-wash); text-decoration: underline;
-  text-decoration-thickness: 1.5px; text-underline-offset: 3px;
-}
-.flag { color: var(--flag); border: 1px dashed var(--flag); padding-inline: 3px; }
-.key-v { color: var(--primary); }
-.key-flag { color: var(--flag); }
-.key-agent { color: var(--agent); }
-
-.notes { display: grid; gap: 12px; max-width: 34rem; min-width: 0; }
-.note {
-  display: grid; gap: 4px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line);
-  border-radius: 2px; font-size: var(--fs-sm); line-height: 1.45;
-}
-.note-label { display: flex; align-items: center; gap: 8px; letter-spacing: 0.06em; }
-.note-label::before { content: ""; flex: none; width: 7px; height: 7px; background: currentColor; }
-.note-value .note-label, .note-meta.note-ok { color: var(--primary); }
-.note-agent .note-label { color: var(--agent); }
-.note-flag .note-label { color: var(--flag); }
-.note-ref { font: 400 var(--fs-xs)/1.5 var(--font-mono); color: var(--muted); overflow-wrap: anywhere; }
-.note-meta { display: flex; align-items: center; gap: 6px; font-size: var(--fs-xs); color: var(--muted); }
-.note code { font-size: 0.92em; }
-@media (min-width: 960px) {
-  .notes { max-width: 24rem; padding-top: 52px; }
-}
-
-/* Rows: the problem and the security controls */
-.rows > li { display: grid; gap: 6px 32px; padding-block: 18px; border-top: 1px solid var(--line); min-width: 0; }
-.rows > li:last-child { padding-bottom: 0; }
-.rows p { color: var(--muted); }
-@media (min-width: 640px) { .rows > li { grid-template-columns: minmax(0, 2fr) minmax(0, 3fr); } }
-
-/* How it works */
-.steps { display: grid; grid-template-columns: minmax(0, 1fr); gap: 36px 28px; }
-.steps > li { display: flex; flex-direction: column; gap: 10px; min-width: 0; padding-top: 14px; border-top: 1px solid var(--ink); }
-.steps p { color: var(--muted); }
-.spec {
-  margin-top: auto; padding: 9px 11px; background: var(--panel); border: 1px solid var(--line); border-radius: 2px;
-  font: 400 var(--fs-xs)/1.6 var(--font-mono); color: var(--muted); overflow-wrap: anywhere;
-}
-.steps .spec { color: var(--muted); }
-.spec b { font-weight: 500; color: var(--ink); }
-.spec-row { display: block; }
-@media (min-width: 640px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1100px) { .steps { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
-
-/* Product */
-.features { display: grid; gap: clamp(48px, 7vw, 96px); }
-.feature { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px var(--col-gap); align-items: center; }
-.feature-text { display: grid; gap: 10px; max-width: 30rem; min-width: 0; }
-.feature-text p { color: var(--muted); }
-.feature-text .path { font: 400 var(--fs-xs)/1.4 var(--font-mono); color: var(--faint); }
-.shot { min-width: 0; padding: 6px; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; }
-.shot img { filter: brightness(var(--shot-dim)); }
-@media (min-width: 900px) {
-  .feature { grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); }
-  .feature:nth-child(even) { grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); }
-  .feature:nth-child(even) .feature-text { order: 2; }
-}
-
-/* Documents */
-.doctable { border-top: 1px solid var(--ink); min-width: 0; }
-.doctable-head { display: none; }
-.docrow { display: grid; gap: 12px; padding-block: 18px; border-bottom: 1px solid var(--line); }
-.docrow h3 { display: grid; gap: 2px; }
-.std { font: 400 var(--fs-xs)/1.45 var(--font-mono); color: var(--muted); }
-.docrow dl { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px 24px; }
-.docrow dt { font: 500 var(--fs-xs)/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
-.docrow dd { font-size: var(--fs-sm); line-height: 1.5; }
-.footnote { font-size: var(--fs-sm); color: var(--muted); max-width: var(--measure); }
-@media (min-width: 560px) { .docrow dl { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (min-width: 1000px) {
-  .doctable-head, .docrow { display: grid; grid-template-columns: minmax(0, 13rem) minmax(0, 1fr); column-gap: 24px; }
-  .doctable-head { padding-block: 10px; border-bottom: 1px solid var(--line); }
-  .doctable-head .cols, .docrow dl { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); column-gap: 24px; }
-  .docrow dt {
-    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-  }
-}
-
-/* Agents: the only section that uses the agent color */
-#agents .eyebrow { color: var(--agent); }
-.facts { display: grid; gap: 14px; padding-top: 6px; }
-.facts > div { display: grid; gap: 2px; padding-top: 14px; border-top: 1px solid var(--line); }
-.facts dt { font-weight: 600; }
-.facts dd { color: var(--muted); }
-.agent-panel { display: grid; gap: 20px; align-content: start; min-width: 0; }
-.table-scroll { overflow-x: auto; min-width: 0; }
-.scopes { width: 100%; border-collapse: collapse; background: var(--panel); border: 1px solid var(--line); font-size: var(--fs-sm); line-height: 1.45; }
-.scopes caption { padding-bottom: 8px; text-align: left; }
-.scopes th, .scopes td { padding: 10px 14px; text-align: left; vertical-align: top; border-top: 1px solid var(--line); }
-.scopes thead th { border-top: 0; font: 500 var(--fs-xs)/1.4 var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--faint); }
-.scopes tbody th { font: 500 var(--fs-sm)/1.45 var(--font-mono); color: var(--agent); white-space: nowrap; }
-.code { min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; }
-.code figcaption { padding: 9px 14px; border-bottom: 1px solid var(--line); font: 500 var(--fs-xs)/1.4 var(--font-mono); color: var(--agent); }
-.code pre { overflow-x: auto; padding: 14px; font-size: var(--fs-xs); line-height: 1.7; color: var(--ink); tab-size: 2; }
-.code .comment { color: var(--faint); }
-.small { font-size: var(--fs-sm); color: var(--muted); }
-
-/* Security */
-.shared { max-width: var(--measure); padding: 14px 16px; background: var(--panel); border: 1px solid var(--line); border-radius: 2px; font-size: var(--fs-sm); }
-.shared strong { font-weight: 600; }
-.manifest {
-  max-width: 30rem; min-width: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 2px;
-  font: 400 var(--fs-xs)/1.5 var(--font-mono); color: var(--muted);
-}
-.manifest figcaption, .digest { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2px 12px; padding: 9px 14px; }
-.manifest figcaption { border-bottom: 1px solid var(--line); }
-.manifest figcaption .label { color: var(--ink); }
-.manifest table { width: 100%; border-collapse: collapse; }
-.manifest th, .manifest td { padding: 7px 10px; text-align: left; white-space: nowrap; }
-.manifest th:first-child, .manifest td:first-child { padding-left: 14px; }
-.manifest th:last-child, .manifest td:last-child { padding-right: 14px; white-space: normal; }
-.manifest thead th { font-weight: 400; color: var(--faint); }
-.manifest tbody td { color: var(--ink); border-top: 1px solid var(--line); }
-.digest { border-top: 1px solid var(--line); }
-
-/* Pilot */
-.pilot { display: grid; gap: 20px; align-content: start; min-width: 0; }
-.checklist li { position: relative; padding: 11px 0 11px 22px; border-top: 1px solid var(--line); }
-.checklist li:last-child { border-bottom: 1px solid var(--line); }
-.checklist li::before { content: ""; position: absolute; left: 2px; top: calc(11px + 0.62em); width: 7px; height: 7px; background: var(--primary); }
-.contact { display: grid; gap: 12px; padding: 20px; background: var(--panel); border: 1px solid var(--line); border-radius: 3px; }
-.contact p:not(.label) { color: var(--muted); }
-.contact-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
-.email { font: 500 var(--fs-md)/1.3 var(--font-mono); color: var(--primary); overflow-wrap: anywhere; }
-
-/* Footer */
-.footer {
-  display: grid; gap: 14px 32px; padding-block: 36px max(48px, calc(env(safe-area-inset-bottom, 0px) + 24px));
-  border-top: 1px solid var(--line); font-size: var(--fs-sm); color: var(--muted);
-}
-.footer .brand { font-size: 1.25rem; }
-.footer ul { display: flex; flex-wrap: wrap; gap: 0 20px; }
-.footer a { color: var(--muted); text-decoration: none; }
-.footer a:hover { color: var(--ink); text-decoration: underline; }
-@media (min-width: 760px) {
-  .footer { grid-template-columns: minmax(0, 1fr) auto; align-items: center; }
-  .footer nav, .footer .demo { justify-self: end; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .btn { transition: none; }
-}
-</style>
+<link rel="stylesheet" href="assets/site.css">
 </head>
 <body>
-<div class="site" id="top">
+<div class="site">
   <a class="skip" href="#main">Skip to content</a>
-
   <header class="masthead">
-    <a class="brand" href="#top" aria-label="Silogram, back to top">
-      <svg class="mark" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false"><rect class="mark-bg" x="1.5" y="1.5" width="21" height="21" rx="2"/><path class="mark-fg" d="M13 5.6H10.1a3.45 3.45 0 0 0 0 6.9H13Z"/><path class="mark-rule" d="M13 5.6V18.4M16 5.6V18.4M12.2 5.6H16.8"/><rect class="mark-dot" x="17.6" y="16" width="2.4" height="2.4"/></svg>
-      <span>Silogram</span>
-    </a>
-    <nav class="nav" aria-label="Main">
+    <a class="brand" href="index.html" aria-label="Silogram home"><svg class="mark" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false"><rect class="mark-bg" width="24" height="24" rx="3"/><path class="mark-line" d="M19 6.5H8.5A2 2 0 0 0 6.5 8.5V10A2 2 0 0 0 8.5 12H10M14 12H15.5A2 2 0 0 1 17.5 14V15.5A2 2 0 0 1 15.5 17.5H5"/><rect class="mark-dot" x="10" y="10" width="4" height="4"/></svg><span>Silogram</span></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
       <ul role="list">
-        <li><a href="#product">Product</a></li>
-        <li><a href="#documents">Documents</a></li>
-        <li><a href="#agents">Agents</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#pilot">Pilot</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="pharma.html">Pharma & biotech</a></li>
+        <li><a href="diagnostics.html">Diagnostics</a></li>
+        <li><a href="access.html">Speed to access</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="company.html">Company</a></li>
       </ul>
     </nav>
-    <a class="btn btn-primary btn-small" href="#pilot">Book a pilot</a>
+    <a class="btn btn-primary btn-small masthead-cta" href="company.html#pilot">Book a pilot</a>
   </header>
-
   <main id="main">
-    <section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title">
       <div class="hero-text">
-        <h1 id="hero-title">Every number in your document, <em>traced to the code that made it.</em></h1>
+        <h1 id="hero-title">Publish sooner. <em>Reach coverage sooner.</em></h1>
         <div class="hero-deck">
-          <p class="lead">Silogram connects the SQL, R and Python in your analysis repository to the manuscripts, abstracts, clinical study reports and regulatory documents built on it. When the analysis changes, each document shows which numbers moved.</p>
+          <p class="lead">Silogram turns the SQL, R and Python in your analysis repository into manuscripts, abstracts, clinical study reports and payer dossiers, with every number traced to the code that made it. Less time drafting and re-checking means the evidence payers and guideline panels ask for exists sooner.</p>
           <div class="actions">
-            <a class="btn btn-primary" href="#pilot">Book a pilot</a>
-            <a class="btn btn-secondary" href="#how">See how it works</a>
+            <a class="btn btn-primary" href="company.html#pilot">Book a pilot</a>
+            <a class="btn btn-secondary" href="access.html">How speed pays</a>
           </div>
-          <p class="hero-note">Read-only access to your repository. Silogram never trains AI models on your documents.</p>
+          <p class="hero-note">For mid-market pharma, biotech and diagnostics teams. Read-only access to your repository. Silogram never trains AI models on your documents.</p>
         </div>
       </div>
 
@@ -433,7 +75,7 @@ h3 { font: 600 var(--fs-md)/1.35 var(--font-sans); text-wrap: balance; }
             <p class="note-meta note-ok"><svg viewBox="0 0 16 16" width="14" height="14" aria-hidden="true" focusable="false"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>Verified · P. Raman</p>
           </li>
           <li class="note note-agent">
-            <p class="note-label label">Grok bot · suggestion</p>
+            <p class="note-label label">Drafting agent · suggestion</p>
             <p>Inserted “in the intention-to-treat population” to name the analysis population, as the SAP does.</p>
             <p class="note-meta">Waiting for review</p>
           </li>
@@ -447,29 +89,64 @@ h3 { font: 600 var(--fs-md)/1.35 var(--font-sans); text-wrap: balance; }
       </figure>
     </section>
 
-    <section class="section split" id="problem" aria-labelledby="problem-title">
+    <section class="section" aria-labelledby="why-title">
       <div class="section-head">
-        <p class="eyebrow">The problem</p>
-        <h2 id="problem-title">The analysis and the document drift apart</h2>
-        <p class="lead">Publications, medical writing, regulatory, RWE/HEOR and biostatistics teams work from the same numbers, kept in different files.</p>
+        <p class="eyebrow">Why speed matters</p>
+        <h2 id="why-title">Coverage decisions wait for the paper</h2>
+        <p class="lead">Formulary dossiers prefer peer-reviewed studies. NCCN Category 1 needs a publication. Medicare’s molecular test program pays from the date a test passes its technical assessment, and its MRD policy requires clinical validity published in the peer-reviewed literature.</p>
       </div>
-      <ul class="rows" role="list">
-        <li>
-          <h3>Numbers copied by hand</h3>
-          <p>Values move from tables, listings and figures into Word one at a time. A reviewer can’t tell which script, line or commit produced a number, or whether the code changed after it was copied.</p>
-        </li>
-        <li>
-          <h3>Plans in spreadsheets</h3>
-          <p>Journal requirements, congress deadlines and review rounds sit in trackers that go stale between status meetings.</p>
-        </li>
-        <li>
-          <h3>Fluent drafts, unchecked numbers</h3>
-          <p>General AI writing tools produce confident prose. They have no link to the numbers your analysis produced.</p>
-        </li>
-      </ul>
+      <div class="stats stats-4">
+        <div class="stat">
+          <p class="stat-figure">8 mo</p>
+          <p>median from an oncology results press release to the full paper.<a class="ref" href="#src-1">1</a></p>
+        </div>
+        <div class="stat">
+          <p class="stat-figure">36%</p>
+          <p>of FDA cancer drug approvals in 2010–2014 had no peer-reviewed efficacy paper within 30 days of approval.<a class="ref" href="#src-2">2</a></p>
+        </div>
+        <div class="stat">
+          <p class="stat-figure">28 days</p>
+          <p>before an NCCN panel meeting is the deadline for outside submissions.<a class="ref" href="#src-3">3</a></p>
+        </div>
+        <div class="stat">
+          <p class="stat-figure">3–4 wks</p>
+          <p>for a MolDX technical assessment once the published evidence is in place.<a class="ref" href="#src-4">4</a></p>
+        </div>
+      </div>
+      <p><a href="access.html">See where the weeks go, and price one</a></p>
     </section>
 
-    <section class="section" id="how" aria-labelledby="how-title">
+    <section class="section" aria-labelledby="markets-title">
+      <div class="section-head">
+        <p class="eyebrow">Who it’s for</p>
+        <h2 id="markets-title">Two markets, one bottleneck</h2>
+        <p class="lead">Mid-sized teams carry big-pharma evidence loads: one readout or validation study becomes a stack of documents, all due at once.</p>
+      </div>
+      <div class="cards">
+        <article class="card">
+          <p class="label">Pharma &amp; biotech</p>
+          <h3>After the readout, every document at once</h3>
+          <ul role="list">
+            <li>Top-line abstract, CSR, manuscript and Module 2 summaries from one locked analysis</li>
+            <li>Formulary, NCCN and EU joint assessment dates tied to each document</li>
+            <li>Code and output ready for HTA dossier appendices</li>
+          </ul>
+          <a class="more" href="pharma.html">Pharma &amp; biotech</a>
+        </article>
+        <article class="card">
+          <p class="label">Diagnostics</p>
+          <h3>From validation study to covered test</h3>
+          <ul role="list">
+            <li>Validation manuscript and payer dossier with the same traced numbers</li>
+            <li>MolDX assessment and NCCN submission dates on the plan</li>
+            <li>STARD 2015 and TRIPOD+AI checklists built in</li>
+          </ul>
+          <a class="more" href="diagnostics.html">Diagnostics</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="how-title">
       <div class="section-head">
         <p class="eyebrow">How it works</p>
         <h2 id="how-title">From the analysis repository to a signed document</h2>
@@ -484,322 +161,96 @@ h3 { font: 600 var(--fs-md)/1.35 var(--font-sans); text-wrap: balance; }
         <li>
           <p class="label">Step 2</p>
           <h3>Read the code in plain language</h3>
-          <p>Each cohort step shows the patients left after it, and each variable and endpoint links to its lines and commit. CDISC ADaM names read in plain English.</p>
+          <p>Each cohort step shows the patients left after it, and each variable and endpoint links to its lines and commit.</p>
           <p class="spec"><span class="spec-row"><b>SAFFL == "Y"</b> → in the safety population</span><span class="spec-row"><b>CNSR == 0</b> → event observed, not censored</span></p>
         </li>
         <li>
           <p class="label">Step 3</p>
           <h3>Draft with every number linked</h3>
-          <p>Writers draft with tracked changes, in your house style. Each number in the text links to an analysis value or gets flagged.</p>
+          <p>Writers and approved agents draft with tracked changes, in your house style. Each number links to an analysis value or gets flagged.</p>
           <p class="spec"><b>{{hr_rfs}}</b> renders as <span class="v">0.88</span> and links to analysis/survival.R:118</p>
         </li>
         <li>
           <p class="label">Step 4</p>
-          <h3>Review, sign and export to Word</h3>
-          <p>Co-authors suggest, writers accept or reject, and approvers sign. The Word export keeps the tracked changes.</p>
-          <p class="spec"><b>NW-201_primary-results_v6.docx</b> · tracked changes kept</p>
+          <h3>Review, sign and submit</h3>
+          <p>Co-authors suggest, writers decide, approvers sign. The Word export keeps the tracked changes, and the access plan shows what the date means.</p>
+          <p class="spec"><b>NW-201_primary-results_v6.docx</b> · signed · locked</p>
         </li>
       </ol>
+      <p><a href="product.html">Tour the product</a></p>
     </section>
 
-    <section class="section" id="product" aria-labelledby="product-title">
+    <section class="section split" aria-labelledby="agents-title">
       <div class="section-head">
-        <p class="eyebrow">Product</p>
-        <h2 id="product-title">One workspace for the analysis and the documents built on it</h2>
-        <p class="lead">Writers, statisticians and reviewers work from the same verified definitions and values.</p>
-      </div>
-      <div class="features">
-        <article class="feature">
-          <div class="feature-text">
-            <p class="path">Project › Evidence</p>
-            <h3>The cohort, read from the code</h3>
-            <p>Each inclusion and exclusion step shows the patients left after it and links to the lines that apply it. Analysts verify each definition, and the verification goes stale when the code changes.</p>
-          </div>
-          <figure class="shot"><img src="assets/evidence.png" width="1440" height="900" loading="lazy" decoding="async" alt="Evidence tab for a synthetic colorectal cancer study. The analysis cohort is listed as 12 steps in code order, each with its patient count, a link to the SQL lines that apply it and a Flag button, next to a participant flow chart."></figure>
-        </article>
-        <article class="feature">
-          <div class="feature-text">
-            <p class="path">Project › Manuscript</p>
-            <h3>Tracked changes, every number linked</h3>
-            <p>Writers, co-authors and agents work in one draft, and a rerun updates the numbers and shows what moved. Export to Word with real tracked changes, or import a co-author’s edits as suggestions.</p>
-          </div>
-          <figure class="shot"><img src="assets/manuscript.png" width="1440" height="900" loading="lazy" decoding="async" alt="Manuscript workspace showing the Discussion section with tracked insertions and deletions, a notice that four analysis values changed since the last sync, and a Changes panel with Accept and Reject for each suggestion."></figure>
-        </article>
-        <article class="feature">
-          <div class="feature-text">
-            <p class="path">Workspace › House style</p>
-            <h3>Your house style, learned from past papers</h3>
-            <p>Silogram learns your spelling, voice, sentence length, how you write P values, CIs and n, and your preferred terms and abbreviations. Every model and agent writes to it, the house-style check proposes mechanical fixes as tracked suggestions, and Silogram never trains AI models on your documents.</p>
-          </div>
-          <figure class="shot"><img src="assets/style.png" width="1440" height="900" loading="lazy" decoding="async" alt="House style page for the synthetic Northwind Oncology workspace, listing what Silogram learned from three past documents, such as spelling, voice, sentence length, number formats, preferred terms and claims, beside a table of abbreviations."></figure>
-        </article>
-        <article class="feature">
-          <div class="feature-text">
-            <p class="path">Portfolio</p>
-            <h3>Forecasts you can plan around</h3>
-            <p>Every document shows a most likely date and a 90% date, recalculated from the work done so far. Plan against forecast shows which phase is slipping and whether it moves submission.</p>
-          </div>
-          <figure class="shot"><img src="assets/dashboard.png" width="1440" height="900" loading="lazy" decoding="async" alt="Portfolio for the synthetic Northwind Oncology workspace with counts of active and at-risk projects, a timeline of four documents showing most likely and 90% submission dates, and a project table with each document’s current phase."></figure>
-        </article>
-        <article class="feature">
-          <div class="feature-text">
-            <p class="path">Project › Journal &amp; checklist</p>
-            <h3>Journal requirements, each with its source</h3>
-            <p>Every requirement quotes the author guidelines or says Not verified, and the readiness check compares your draft with each one. Reporting checklists cover STROBE, RECORD, CONSORT 2025, STARD 2015 and TRIPOD+AI.</p>
-          </div>
-          <figure class="shot"><img src="assets/journal.png" width="1440" height="900" loading="lazy" decoding="async" alt="Journal and checklist tab with Clinical Cancer Research as the target journal. Each requirement, such as the 5,000-word main text and the 250-word structured abstract, shows its quoted source or Not verified, and a readiness panel shows which ones the draft meets."></figure>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="documents" aria-labelledby="documents-title">
-      <div class="section-head">
-        <p class="eyebrow">Documents</p>
-        <h2 id="documents-title">Publications, clinical and regulatory documents</h2>
-        <p class="lead">Each document type gets its own outline, plan, drafting voice and check. All of them draw on the same verified analysis.</p>
-      </div>
-      <div class="doctable">
-        <div class="doctable-head label" aria-hidden="true">
-          <span>Document</span>
-          <div class="cols"><span>Outline</span><span>Plan</span><span>Drafting voice</span><span>Check</span></div>
-        </div>
-        <article class="docrow">
-          <h3>Journal manuscript <span class="std">ICMJE · STROBE, CONSORT and others</span></h3>
-          <dl>
-            <div><dt>Outline</dt><dd>Abstract, IMRaD sections, data availability, use of AI</dd></div>
-            <div><dt>Plan</dt><dd>Analysis and QC, drafting, co-author review, submission, peer review</dd></div>
-            <div><dt>Drafting voice</dt><dd>Precise and neutral, past tense for methods and results</dd></div>
-            <div><dt>Check</dt><dd>Target journal’s requirements and the reporting checklist</dd></div>
-          </dl>
-        </article>
-        <article class="docrow">
-          <h3>Congress abstract <span class="std">Congress word or character limit</span></h3>
-          <dl>
-            <div><dt>Outline</dt><dd>Background, Methods, Results, Conclusions</dd></div>
-            <div><dt>Plan</dt><dd>Works back from the deadline, with medical, legal and compliance review</dd></div>
-            <div><dt>Drafting voice</dt><dd>Terse, one idea per sentence, no citations</dd></div>
-            <div><dt>Check</dt><dd>Every section drafted, with word counts</dd></div>
-          </dl>
-        </article>
-        <article class="docrow">
-          <h3>Clinical study report <span class="std">ICH E3</span></h3>
-          <dl>
-            <div><dt>Outline</dt><dd>Synopsis through efficacy, safety and overall conclusions</dd></div>
-            <div><dt>Plan</dt><dd>Database lock, TLF QC, review rounds, document QC, sign-off</dd></div>
-            <div><dt>Drafting voice</dt><dd>Objective and factual, past tense, no promotional language</dd></div>
-            <div><dt>Check</dt><dd>Every ICH E3 section present and drafted</dd></div>
-          </dl>
-        </article>
-        <article class="docrow">
-          <h3>Protocol <span class="std">ICH M11-style</span></h3>
-          <dl>
-            <div><dt>Outline</dt><dd>Objectives, endpoints and estimands, design, population, statistics</dd></div>
-            <div><dt>Plan</dt><dd>Synopsis, draft, review, approval, ethics and authority submission</dd></div>
-            <div><dt>Drafting voice</dt><dd>Future tense for planned procedures</dd></div>
-            <div><dt>Check</dt><dd>Every M11-style section present and drafted</dd></div>
-          </dl>
-        </article>
-        <article class="docrow">
-          <h3>Statistical analysis plan <span class="std">ICH E9 and E9(R1)</span></h3>
-          <dl>
-            <div><dt>Outline</dt><dd>Analysis populations, estimands, missing data, efficacy and safety analyses</dd></div>
-            <div><dt>Plan</dt><dd>Draft, review, table shells, sign-off before database lock</dd></div>
-            <div><dt>Drafting voice</dt><dd>Future tense, with every analysis population named</dd></div>
-            <div><dt>Check</dt><dd>Every SAP section present and drafted</dd></div>
-          </dl>
-        </article>
-        <article class="docrow">
-          <h3>Clinical summary <span class="std">CTD Module 2</span></h3>
-          <dl>
-            <div><dt>Outline</dt><dd>Clinical efficacy, clinical safety, special populations, benefits and risks</dd></div>
-            <div><dt>Plan</dt><dd>Integrated analyses, review rounds, QC against the CSRs, sign-off</dd></div>
-            <div><dt>Drafting voice</dt><dd>Objective, with consistent terms for populations, treatments and endpoints</dd></div>
-            <div><dt>Check</dt><dd>Every Module 2 section present and drafted</dd></div>
-          </dl>
-        </article>
-      </div>
-      <p class="footnote">Every outline includes a use-of-AI section, drafted from the log of model and agent calls.</p>
-    </section>
-
-    <section class="section split" id="agents" aria-labelledby="agents-title">
-      <div class="section-head">
-        <p class="eyebrow">Agents and models</p>
-        <h2 id="agents-title">Agents suggest. People decide.</h2>
-        <p class="lead">Run the model your team prefers and connect the agents you already use. An agent’s edit reaches the text only after a person accepts it.</p>
-        <dl class="facts">
-          <div><dt>Built-in models</dt><dd>Claude, OpenAI, Grok and Muse, with your own keys. Writers pick the model for each run.</dd></div>
-          <div><dt>Outside agents</dt><dd>Claude Code, ChatGPT or Codex agents, a Grok bot, a Muse agent or your own script, connected over MCP or the REST API.</dd></div>
-          <div><dt>Under their own name</dt><dd>Agent edits arrive as tracked suggestions under the agent’s name. Numbers they write are linked or flagged, and every call is logged.</dd></div>
-        </dl>
-      </div>
-      <div class="agent-panel">
-        <div class="table-scroll">
-          <table class="scopes">
-            <caption class="label">Token scopes</caption>
-            <thead>
-              <tr><th scope="col">Scope</th><th scope="col">What the agent can do</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">read</th><td>Read verified definitions, values, sections and the house style</td></tr>
-              <tr><th scope="row">suggest</th><td>Propose edits, which arrive as tracked suggestions</td></tr>
-              <tr><th scope="row">comment</th><td>Leave comments on a section for the writers</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <figure class="code">
-          <figcaption>Example · connect Claude Code over MCP</figcaption>
-          <pre><code><span class="comment"># Token from Settings › AI &amp; agents</span>
-claude mcp add --transport http silogram \
-  https://app.silogram.ai/api/mcp \
-  --header "Authorization: Bearer sg_…"</code></pre>
-        </figure>
-        <p class="small">Each token is shown once, stored as a hash, rate-limited and revocable at any time.</p>
-      </div>
-    </section>
-
-    <section class="section split" id="security" aria-labelledby="security-title">
-      <div class="section-head">
-        <p class="eyebrow">Security</p>
-        <h2 id="security-title">Built for regulated work</h2>
-        <p class="lead">Silogram is designed to support 21 CFR Part 11 and HIPAA requirements for electronic records, electronic signatures and protected health information.</p>
-        <p class="shared"><strong>Shared responsibility.</strong> Validation in your environment and your SOPs stay with you. Silogram supplies the controls and the evidence.</p>
-        <figure class="manifest">
-          <figcaption><span class="label">Signature manifest</span><span>NW-201 primary results, version 6</span></figcaption>
-          <div class="table-scroll">
-            <table>
-              <thead>
-                <tr><th scope="col">Meaning</th><th scope="col">Signer</th><th scope="col">Signed (UTC)</th></tr>
-              </thead>
-              <tbody>
-                <tr><td>Author</td><td>Elena Ruiz</td><td>2026-10-01 09:12</td></tr>
-                <tr><td>Reviewer</td><td>Priya Raman</td><td>2026-10-01 15:47</td></tr>
-                <tr><td>Approver</td><td>James Okafor</td><td>2026-10-02 10:05</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p class="digest"><span>SHA-256 9e0c…b25a</span><span>Locked after approval</span></p>
-        </figure>
+        <p class="eyebrow">Agentic, with people in charge</p>
+        <h2 id="agents-title">Agents draft. People decide.</h2>
+        <p class="lead">Bring the models and agents your company has approved. They read verified definitions, values and your house style, and every edit they make arrives as a tracked suggestion under their own name.</p>
       </div>
       <ul class="rows" role="list">
         <li>
-          <h3>Audit trail</h3>
-          <p>Append-only and tamper-evident. Each entry records who changed what and when, with the old and new values.</p>
+          <h3>Any approved model</h3>
+          <p>The writing assistant runs on your company’s model keys. Writers choose the model for each run.</p>
         </li>
         <li>
-          <h3>Electronic signatures</h3>
-          <p>Each signature records the signer, the date and time, and its meaning, bound to a SHA-256 digest of the exact content signed.</p>
+          <h3>Any agent, over MCP or REST</h3>
+          <p>Scoped, revocable tokens let outside agents read context, propose edits and comment. Nothing they write reaches the text until a person accepts it.</p>
         </li>
         <li>
-          <h3>Approval locks</h3>
-          <p>Approval needs a review by someone else and no open suggestions. It locks the document until someone reopens it with a reason.</p>
-        </li>
-        <li>
-          <h3>Two-factor <span class="nowrap">sign-in</span> and lockout</h3>
-          <p>Authenticator-app codes, which admins can require for everyone. Repeated failed sign-in or signing attempts lock the account.</p>
-        </li>
-        <li>
-          <h3>Automatic sign-out</h3>
-          <p>Idle sessions end after a time the workspace sets, checked in the browser and again on the server.</p>
-        </li>
-        <li>
-          <h3>PHI guard and BAA-covered models</h3>
-          <p>No-PHI workspaces keep likely patient identifiers out of uploads, model calls and agent writes. PHI workspaces allow only BAA-covered model connections and agents.</p>
-        </li>
-        <li>
-          <h3>Encryption</h3>
-          <p>Model keys and repository tokens are encrypted at rest with AES-256-GCM, agent tokens are stored as hashes, and connections use TLS.</p>
-        </li>
-        <li>
-          <h3>Validation package</h3>
-          <p>A traceability matrix and test evidence generated from the automated test suite, as a starting point for your own validation.</p>
+          <h3>Logged for disclosure</h3>
+          <p>Every model and agent call is recorded, and the use-of-AI section is drafted from that log.</p>
         </li>
       </ul>
     </section>
 
-    <section class="section split" id="pilot" aria-labelledby="pilot-title">
+    <section class="section cta" aria-labelledby="security-title">
       <div class="section-head">
-        <p class="eyebrow">Pilot</p>
-        <h2 id="pilot-title">Start with a <span class="nowrap">90-day</span> paid pilot on a live document.</h2>
-        <p class="lead">Pick one document your team is writing now. We connect its analysis repository and work with your writers and statisticians for 90 days.</p>
+        <p class="eyebrow">Security</p>
+        <h2 id="security-title">Built for regulated work</h2>
+        <p class="lead">Designed to support 21 CFR Part 11 and HIPAA: an append-only audit trail, electronic signatures bound to the exact text signed, approval locks, two-factor sign-in and a PHI guard.</p>
       </div>
-      <div class="pilot">
-        <h3>What the pilot includes</h3>
-        <ul class="checklist" role="list">
-          <li>Your team on one live document, from analysis to review</li>
-          <li>A house-style audit of your past manuscripts and abstracts</li>
-          <li>Connection to your analysis repository with a read-only token</li>
-          <li>Weekly check-ins with us</li>
-          <li>The pilot fee credited to an annual plan</li>
-        </ul>
-        <div class="contact">
-          <p class="label">Book a pilot</p>
-          <p>Email us with the document you have in mind and when it is due.</p>
-          <div class="contact-row">
-            <a class="email" id="email" href="mailto:hello@silogram.ai">hello@silogram.ai</a>
-            <button class="btn btn-secondary btn-small" id="copy-email" type="button">Copy</button>
-          </div>
-          <p class="sr-only" id="copy-status" aria-live="polite"></p>
-        </div>
+      <div class="actions actions-end">
+        <a class="btn btn-secondary" href="security.html">Security and compliance</a>
       </div>
     </section>
-  </main>
 
+    <section class="section cta" aria-labelledby="cta-title">
+      <div class="section-head">
+        <p class="eyebrow">Pilot</p>
+        <h2 id="cta-title">Start with a <span class="nowrap">90-day</span> paid pilot on a live document.</h2>
+        <p class="lead">Pick one manuscript, abstract, CSR or dossier your team is writing now. We connect its analysis repository and measure the time from locked outputs to submission.</p>
+      </div>
+      <div class="actions actions-end">
+        <a class="btn btn-primary" href="company.html#pilot">Book a pilot</a>
+      </div>
+    </section>
+
+    <section class="sources-block" aria-labelledby="sources-title">
+      <h2 id="sources-title" class="label">Sources</h2>
+      <ol class="sources" role="list">
+        <li id="src-1"><span>1</span><span>Valsecchi et al. <i>J Cancer Policy</i>. 2025. <a href="https://pubmed.ncbi.nlm.nih.gov/40268192/">PubMed 40268192</a>.</span></li>
+        <li id="src-2"><span>2</span><span>Lammers et al. <i>Blood Cancer J</i>. 2017. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5802585/">PMC5802585</a>.</span></li>
+        <li id="src-3"><span>3</span><span>NCCN. <a href="https://www.nccn.org/docs/default-source/default-document-library/gl-submission-process-faqs_11_27-24.pdf">Guidelines submission process FAQs</a> (November 2024).</span></li>
+        <li id="src-4"><span>4</span><span>Palmetto GBA. <a href="https://dominoapps.palmettogba.com/palmetto/providers.nsf/files/MolDX_General_FAQs.pdf/$FILE/MolDX_General_FAQs.pdf">MolDX General FAQs</a>.</span></li>
+      </ol>
+    </section>
+  </main>
   <footer class="footer">
-    <a class="brand" href="#top" aria-label="Silogram, back to top">
-      <svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect class="mark-bg" x="1.5" y="1.5" width="21" height="21" rx="2"/><path class="mark-fg" d="M13 5.6H10.1a3.45 3.45 0 0 0 0 6.9H13Z"/><path class="mark-rule" d="M13 5.6V18.4M16 5.6V18.4M12.2 5.6H16.8"/><rect class="mark-dot" x="17.6" y="16" width="2.4" height="2.4"/></svg>
-      <span>Silogram</span>
-    </a>
+    <a class="brand" href="index.html" aria-label="Silogram home"><svg class="mark" viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" focusable="false"><rect class="mark-bg" width="24" height="24" rx="3"/><path class="mark-line" d="M19 6.5H8.5A2 2 0 0 0 6.5 8.5V10A2 2 0 0 0 8.5 12H10M14 12H15.5A2 2 0 0 1 17.5 14V15.5A2 2 0 0 1 15.5 17.5H5"/><rect class="mark-dot" x="10" y="10" width="4" height="4"/></svg><span>Silogram</span></a>
     <nav aria-label="Footer">
       <ul role="list">
-        <li><a href="#product">Product</a></li>
-        <li><a href="#documents">Documents</a></li>
-        <li><a href="#agents">Agents</a></li>
-        <li><a href="#security">Security</a></li>
-        <li><a href="#pilot">Pilot</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="pharma.html">Pharma & biotech</a></li>
+        <li><a href="diagnostics.html">Diagnostics</a></li>
+        <li><a href="access.html">Speed to access</a></li>
+        <li><a href="security.html">Security</a></li>
+        <li><a href="company.html">Company</a></li>
       </ul>
     </nav>
     <p>© 2026 Silogram · silogram.ai</p>
-    <p class="demo">Product screenshots and examples use synthetic demo data (Northwind Oncology).</p>
+    <p class="demo">Product screenshots use synthetic demo data (Northwind Oncology). Companies and products named in public examples are not Silogram customers.</p>
   </footer>
 </div>
-
-<script>
-(function () {
-  var button = document.getElementById("copy-email");
-  var address = document.getElementById("email");
-  var status = document.getElementById("copy-status");
-  if (!button || !address) return;
-  var timer;
-
-  function show(label, message) {
-    button.textContent = label;
-    if (status) status.textContent = message;
-    clearTimeout(timer);
-    timer = setTimeout(function () { button.textContent = "Copy"; }, 2500);
-  }
-
-  function selectAddress() {
-    var selection = window.getSelection ? window.getSelection() : null;
-    if (selection) {
-      var range = document.createRange();
-      range.selectNodeContents(address);
-      selection.removeAllRanges();
-      selection.addRange(range);
-    }
-    show("Selected", "Email address selected. Copy it with your keyboard.");
-  }
-
-  button.addEventListener("click", function () {
-    var text = address.textContent.trim();
-    try {
-      navigator.clipboard.writeText(text).then(function () {
-        show("Copied", "Email address copied.");
-      }, selectAddress);
-    } catch (error) {
-      selectAddress();
-    }
-  });
-})();
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
