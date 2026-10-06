@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="format-detection" content="telephone=no, date=no, address=no">
 <script>document.documentElement.classList.add("js")</script>
 <meta name="robots" content="noindex, nofollow">
 <title>Speed to access · Silogram</title>
 <meta name="description" content="Coverage, formulary and guideline decisions wait for peer-reviewed evidence. Silogram shortens the internal work between a locked analysis and a submitted paper, and prices each week against your own revenue.">
-<meta name="theme-color" content="#1E3F69">
+<meta name="theme-color" content="#F4F6F8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Silogram">
 <meta property="og:title" content="Speed to access · Silogram">
@@ -30,7 +31,7 @@
 <div class="nav-shell">
     <div class="nav-bar">
       <a class="brand" href="index.html" aria-label="Silogram home"><svg class="mark" viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" focusable="false"><rect class="mark-bg" width="24" height="24" rx="3"/><path class="mark-line" d="M19 6.5H8.5A2 2 0 0 0 6.5 8.5V10A2 2 0 0 0 8.5 12H10M14 12H15.5A2 2 0 0 1 17.5 14V15.5A2 2 0 0 1 15.5 17.5H5"/><rect class="mark-dot" x="10" y="10" width="4" height="4"/></svg><span>Silogram</span></a>
-      <nav class="nav" id="site-nav" aria-label="Main"><ul role="list"><li><a href="product.html">Product</a></li><li><details class="nav-menu"><summary class="is-current">Solutions</summary><ul role="list"><li><a href="pharma.html"><span class="menu-label">Pharma & biotech</span><span class="menu-note">Formulary, guidelines, HTA</span></a></li><li><a href="diagnostics.html"><span class="menu-label">Diagnostics</span><span class="menu-note">MolDX, NCCN, commercial plans</span></a></li><li><a href="access.html" aria-current="page"><span class="menu-label">Speed to access</span><span class="menu-note">Price a week with your numbers</span></a></li></ul></details></li><li><a href="compare.html">Compare</a></li><li><a href="security.html">Security</a></li><li><details class="nav-menu"><summary>Company</summary><ul role="list"><li><a href="about.html"><span class="menu-label">About</span><span class="menu-note">Why Silogram exists, and who builds it</span></a></li><li><a href="careers.html"><span class="menu-label">Careers</span><span class="menu-note">The first roles we're hiring for</span></a></li><li><a href="contact.html"><span class="menu-label">Contact</span><span class="menu-note">Pilots, security, press</span></a></li></ul></details></li></ul></nav>
+      <nav class="nav" id="site-nav" aria-label="Main"><ul role="list"><li><a href="product.html">Product</a></li><li><details class="nav-menu"><summary class="is-current">Solutions</summary><ul role="list"><li><a href="pharma.html"><span class="menu-label">Pharma & biotech</span><span class="menu-note">Formulary, guidelines, HTA</span></a></li><li><a href="diagnostics.html"><span class="menu-label">Diagnostics</span><span class="menu-note">MolDX, NCCN, commercial plans</span></a></li><li><a href="access.html" aria-current="page"><span class="menu-label">Speed to access</span><span class="menu-note">Price a week with your numbers</span></a></li></ul></details></li><li><a href="compare.html">Compare</a></li><li><a href="security.html">Security</a></li><li><details class="nav-menu"><summary>Company</summary><ul role="list"><li><a href="about.html"><span class="menu-label">About</span><span class="menu-note">Why Silogram exists, and who builds it</span></a></li><li><a href="careers.html"><span class="menu-label">Careers</span><span class="menu-note">The first roles we're hiring for</span></a></li><li><a href="contact.html"><span class="menu-label">Contact</span><span class="menu-note">Pilots, security, press</span></a></li></ul></details></li><li class="nav-menu-cta"><a class="btn btn-primary" href="mailto:mmargolis27@gmail.com?subject=Silogram%20pilot">Book a pilot</a></li></ul></nav>
       <a class="btn btn-primary btn-small nav-cta" href="mailto:mmargolis27@gmail.com?subject=Silogram%20pilot">Book a pilot</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
     </div>
@@ -40,7 +41,7 @@
   <div class="wrap">
     <div class="head">
       <p class="pill-tag">Speed to access</p>
-      <h1 id="page-title">Publish sooner. <span class="hl-ink">Reach coverage sooner.</span></h1>
+      <h1 id="page-title"><span class="ln">Publish sooner. </span><span class="ln"><span class="hl-ink">Reach coverage sooner.</span></span></h1>
       <p class="lead">Coverage, formulary and guideline decisions wait for peer-reviewed evidence. Much of the time between a locked analysis and a submitted paper is internal: drafting, checking numbers, review rounds and sign-off. That is the part Silogram shortens, and the part you control.</p>
     </div>
   </div>
@@ -74,17 +75,17 @@
         <legend>Your assumptions</legend>
         <div class="field">
           <label for="calc-revenue">Annual revenue once covered (USD)</label>
-          <input id="calc-revenue" name="revenue" inputmode="decimal" autocomplete="off" value="50,000,000">
-          <p class="hint">For the product or test the decision covers. "50M" works too.</p>
+          <input id="calc-revenue" name="revenue" inputmode="decimal" enterkeyhint="done" autocomplete="off" value="50,000,000">
+          <p class="hint">For the product or test the decision covers. <span class="hint-keys">"50M" works too.</span></p>
         </div>
         <div class="field">
           <label for="calc-weeks">Weeks earlier</label>
-          <input id="calc-weeks" name="weeks" type="number" min="0" max="104" step="1" value="4">
+          <input id="calc-weeks" name="weeks" type="number" inputmode="numeric" pattern="[0-9]*" enterkeyhint="done" min="0" max="104" step="1" value="4">
           <p class="hint">How much sooner the paper, and so the decision, could come.</p>
         </div>
         <div class="field">
           <label for="calc-docs">Decisions affected</label>
-          <input id="calc-docs" name="docs" type="number" min="1" max="50" step="1" value="1">
+          <input id="calc-docs" name="docs" type="number" inputmode="numeric" pattern="[0-9]*" enterkeyhint="done" min="1" max="50" step="1" value="1">
           <p class="hint">Each with the same revenue.</p>
         </div>
       </fieldset>
@@ -105,7 +106,7 @@
 <section class="band" aria-labelledby="product-title">
   <div class="wrap">
     <div class="panel">
-      <div class="window"><img src="assets/access.png" width="1440" height="900" loading="lazy" alt="Access tab for a synthetic phase 3 congress abstract: the abstract's likely decision date, the time an NCCN Guidelines update usually takes, and the resulting likely access date, with the revenue deferred by each week of delay."></div>
+      <div class="window"><picture><source media="(max-width: 719px)" srcset="assets/access-phone.png" width="536" height="524"><img src="assets/access.png" width="1440" height="900" loading="lazy" alt="Access tab for a synthetic phase 3 congress abstract: the abstract's likely decision date, the time an NCCN Guidelines update usually takes, and the resulting likely access date, with the revenue deferred by each week of delay."></picture></div>
       <div class="panel-copy">
         <p class="pill-tag">In the product</p>
         <h2 id="product-title">The access plan.</h2>
@@ -118,7 +119,7 @@
 
 <section class="band band-wash" aria-labelledby="claim-title">
   <div class="wrap">
-    <div class="head"><h2 id="claim-title">The rule is documented. The speed-up is yours to measure.</h2></div>
+    <div class="head"><h2 id="claim-title"><span class="ln">The rule is documented. </span><span class="ln">The speed-up is yours to measure.</span></h2></div>
     <div class="facts-grid facts-grid-3">
       <div class="fact"><h3>Documented</h3><p>Payers, guideline panels and Medicare contractors look for peer-reviewed evidence, and the paper often arrives months or years after the analysis. See the <a href="pharma.html">pharma</a> and <a href="diagnostics.html">diagnostics</a> pages for the rules and their sources.</p></div>
       <div class="fact"><h3>Not measured anywhere</h3><p>No study measures how much sooner a coverage decision comes when a paper comes sooner. Decisions usually cite several studies, and some follow annual cycles.<a class="ref" href="#src-8">8</a></p></div>
@@ -136,14 +137,14 @@
     <li id="src-4"><span>4</span><span>NCCN. <a href="https://www.nccn.org/docs/default-source/default-document-library/gl-submission-process-faqs_11_27-24.pdf">Guidelines submission process FAQs</a> (November 2024).</span></li>
     <li id="src-5"><span>5</span><span>Valsecchi et al. <i>J Cancer Policy</i>. 2025. <a href="https://pubmed.ncbi.nlm.nih.gov/40268192/">PubMed 40268192</a>.</span></li>
     <li id="src-6"><span>6</span><span>Cochrane. <a href="https://www.cochrane.org/evidence/MR000011_how-long-do-clinical-trials-take-publish-their-results">How long do clinical trials take to publish their results?</a> (methodology review, November 2024).</span></li>
-    <li id="src-7"><span>7</span><span>Smith, DiMasi and Getz. <i>Ther Innov Regul Sci</i>. 2024;58:855–862. <a href="https://pubmed.ncbi.nlm.nih.gov/38773058/">PubMed 38773058</a>.</span></li>
+    <li id="src-7"><span>7</span><span>Smith, DiMasi and Getz. <i>Ther Innov Regul Sci</i>. <span class="nowrap">2024;58:855–862.</span> <a href="https://pubmed.ncbi.nlm.nih.gov/38773058/">PubMed 38773058</a>.</span></li>
     <li id="src-8"><span>8</span><span>Sexton et al. <i>JAMA Health Forum</i>. 2023. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10403784/">PMC10403784</a>.</span></li>
   </ol>
 </section>
 </main>
 <section class="cta-band" aria-labelledby="closing-title">
     <div class="wrap">
-      <h2 id="closing-title">Bring one document that matters.<br>See how many weeks you get back.</h2>
+      <h2 id="closing-title"><span class="ln">Bring one document that matters.</span><br><span class="ln">See how many weeks you get&nbsp;back.</span></h2>
       <p class="lead">A 90-day paid pilot on a live manuscript, abstract, CSR or dossier, connected to its analysis repository with a read-only token.</p>
       <div class="actions"><a class="btn btn-light" href="mailto:mmargolis27@gmail.com?subject=Silogram%20pilot"><span class="arrow">Book a pilot</span></a><a class="btn btn-ghost" href="product.html">Tour the product</a></div>
     </div>
@@ -153,7 +154,7 @@
       <div class="footer-top">
         <div>
           <a class="brand" href="index.html" aria-label="Silogram home"><svg class="mark" viewBox="0 0 24 24" width="26" height="26" aria-hidden="true" focusable="false"><rect class="mark-bg" width="24" height="24" rx="3"/><path class="mark-line" d="M19 6.5H8.5A2 2 0 0 0 6.5 8.5V10A2 2 0 0 0 8.5 12H10M14 12H15.5A2 2 0 0 1 17.5 14V15.5A2 2 0 0 1 15.5 17.5H5"/><rect class="mark-dot" x="10" y="10" width="4" height="4"/></svg><span>Silogram</span></a>
-          <p class="footer-blurb">Silogram links analysis code to the manuscripts, clinical study reports and payer dossiers built on it. Read-only access to your repository; no training on your documents; designed to support 21 CFR Part 11 and HIPAA.</p>
+          <p class="footer-blurb">Silogram links analysis code to the manuscripts, clinical study reports and payer dossiers built on it. Read-only access to your repository; no training on your documents; designed to support 21&nbsp;CFR&nbsp;Part&nbsp;11 and HIPAA.</p>
         </div>
         <div><h3>Product</h3><ul role="list"><li><a href="product.html">Product tour</a></li><li><a href="product.html#reproduce">Reproduce from code</a></li><li><a href="security.html">Security</a></li><li><a href="compare.html">Compare</a></li></ul></div>
         <div><h3>Solutions</h3><ul role="list"><li><a href="pharma.html">Pharma & biotech</a></li><li><a href="diagnostics.html">Diagnostics</a></li><li><a href="access.html">Speed to access</a></li></ul></div>
