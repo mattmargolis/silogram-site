@@ -59,10 +59,25 @@
       var s = a >= 1e9 ? (a / 1e9).toFixed(a >= 1e10 ? 0 : 1) + "B" : a >= 1e6 ? (a / 1e6).toFixed(a >= 1e8 ? 0 : 1) + "M" : a >= 1e3 ? Math.round(a / 1e3) + "K" : String(Math.round(a));
       return "$" + s.replace(/\.0(?=[BMK])/, "");
     };
+    // Accepts "50000000", "$50,000,000", "50M", "1.2B", "750k" and "50 million".
+    var parseAmount = function (raw) {
+      var t = String(raw).toLowerCase().replace(/[$,\s]/g, "");
+      var m = /^(\d+(?:\.\d+)?)(k|thousand|m|mm|million|b|bn|billion)?$/.exec(t);
+      if (!m) return 0;
+      var mult = { k: 1e3, thousand: 1e3, m: 1e6, mm: 1e6, million: 1e6, b: 1e9, bn: 1e9, billion: 1e9 }[m[2] || ""] || 1;
+      return parseFloat(m[1]) * mult;
+    };
     var num = function (id) {
-      var v = parseFloat(String(document.getElementById(id).value).replace(/[$,\s]/g, ""));
+      var v = parseAmount(document.getElementById(id).value);
       return isFinite(v) && v > 0 ? v : 0;
     };
+    var revenueInput = document.getElementById("calc-revenue");
+    if (revenueInput) {
+      revenueInput.addEventListener("blur", function () {
+        var v = parseAmount(revenueInput.value);
+        if (v > 0) revenueInput.value = Math.round(v).toLocaleString("en-US");
+      });
+    }
     var update = function () {
       var revenue = num("calc-revenue");
       var weeks = num("calc-weeks");
