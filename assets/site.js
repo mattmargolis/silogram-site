@@ -22,6 +22,26 @@
     });
   }
 
+  /* Navigation menus (<details>): one open at a time; close on an outside click or Escape */
+  var menus = Array.prototype.slice.call(document.querySelectorAll(".nav-menu"));
+  menus.forEach(function (m) {
+    m.addEventListener("toggle", function () {
+      if (m.open) menus.forEach(function (o) { if (o !== m) o.open = false; });
+    });
+  });
+  document.addEventListener("click", function (e) {
+    menus.forEach(function (m) { if (m.open && !m.contains(e.target)) m.open = false; });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    menus.forEach(function (m) {
+      if (m.open) {
+        m.open = false;
+        m.querySelector("summary").focus();
+      }
+    });
+  });
+
   /* Tabs: [data-tabs] holds a .tablist of buttons and .tabpanel siblings in the same order */
   Array.prototype.forEach.call(document.querySelectorAll("[data-tabs]"), function (set) {
     var buttons = Array.prototype.slice.call(set.querySelectorAll('[role="tab"]'));
